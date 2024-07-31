@@ -6,24 +6,24 @@ import jwt
 app = Flask(__name__)
 app.secret_key = os.urandom(25)
 
-client_id = "bd9a644b0d91195674c59046852ca653"
-client_secret = "e5d9325601b9350e3f136ad0aa3d61f0"
+client_id = 
+client_secret =
 redirect_uri = "http://localhost:3000/idme"
 response_type = 'authorization_code'
 
-auth_link = 'https://api.idmelabs.com/oauth/authorize?client_id=bd9a644b0d91195674c59046852ca653&redirect_uri=http://localhost:3000/idme&response_type=code&scope=openid%20http://idmanagement.gov/ns/assurance/ial/2/aal/2'
+auth_link = 
 
 @app.route('/')
 def index():
 
-    """Redirect the user to the OAuth provider's authorization page."""
+    """Direct users to authorization endpoint"""
 
     return redirect(auth_link)
 
 @app.route('/idme', methods=['GET'])
 def callback():
 
-    """Handle the callback and extract the authorization code."""
+    """Handle callback, extract authorization code, proceed"""
 
     auth_code = request.args.get('code')
     if auth_code:
