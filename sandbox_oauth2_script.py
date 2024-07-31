@@ -7,11 +7,11 @@ app = Flask(__name__)
 app.secret_key = os.urandom(25)
 
 client_id = 
-client_secret =
+client_secret = 
 redirect_uri = "http://localhost:3000/idme"
 response_type = 'authorization_code'
 
-auth_link = 
+auth_link = "https://api.idmelabs.com/oauth/authorize?client_id=&redirect_uri=http://localhost:3000/idme&response_type=code&scope=openid%20http://idmanagement.gov/ns/assurance/ial/2/aal/2&eid=555"
 
 @app.route('/')
 def index():
