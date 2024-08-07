@@ -3,14 +3,16 @@ import os
 import requests
 import jwt
 
+from data_storage import StoreData
+
 app = Flask(__name__)
 app.secret_key = os.urandom(25)
 
 redirect_uri = "http://localhost:3000/idme"
 response_type = 'authorization_code'
 
-client_id =
-client_secret = 
+client_id = "bd9a644b0d91195674c59046852ca653"
+client_secret = "e5d9325601b9350e3f136ad0aa3d61f0"
 auth_link = f"https://api.idmelabs.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope=openid%20http://idmanagement.gov/ns/assurance/ial/2/aal/2&eid=555"
 
 @app.route('/')
@@ -52,7 +54,16 @@ def callback():
             if id_token:
                 decoded_id_token = jwt.decode(id_token, options={"verify_signature": False})
                 print(f'Decoded id_token: {decoded_id_token}\n')
-                return jsonify(decoded_id_token)
+                payload = decoded_id_token
+
+                # initialize the StoreData class and pass in payload
+                data_storage = StoreData(payload)
+
+                # store data
+                data_storage.save_json()
+                data_storage.save_csv()
+
+                return payload
 
         return f'Authentication completed! Authorization code: {auth_code}'
 
