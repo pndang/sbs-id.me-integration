@@ -20,6 +20,7 @@ class StoreData:
             with open(file_name, 'r') as file:
                 data = json.load(file)
 
+        # fill any empty fields with null
         payload = {field: self.payload.get(field) for field in self.headers}
         data.append(payload) 
 
