@@ -6,12 +6,12 @@ import jwt
 app = Flask(__name__)
 app.secret_key = os.urandom(25)
 
-client_id = 
-client_secret = 
 redirect_uri = "http://localhost:3000/idme"
 response_type = 'authorization_code'
 
-auth_link = "https://api.idmelabs.com/oauth/authorize?client_id=&redirect_uri=http://localhost:3000/idme&response_type=code&scope=openid%20http://idmanagement.gov/ns/assurance/ial/2/aal/2&eid=555"
+client_id =
+client_secret = 
+auth_link = f"https://api.idmelabs.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope=openid%20http://idmanagement.gov/ns/assurance/ial/2/aal/2&eid=555"
 
 @app.route('/')
 def index():
@@ -28,7 +28,7 @@ def callback():
     auth_code = request.args.get('code')
     if auth_code:
         session['auth_code'] = auth_code
-        print(f'Authorization code: {auth_code}')
+        print(f'Authorization code: {auth_code}\n')
 
         token_payload_url = f"https://api.idmelabs.com/oauth/token"
         
@@ -46,12 +46,12 @@ def callback():
 
         if response.status_code == 200:
             token_payload = response.json()
-            print(f'Token payload: {token_payload}')
+            print(f'Token payload: {token_payload}\n')
 
             id_token = token_payload['id_token']
             if id_token:
                 decoded_id_token = jwt.decode(id_token, options={"verify_signature": False})
-                print(f'Decoded id_token: {decoded_id_token}')
+                print(f'Decoded id_token: {decoded_id_token}\n')
                 return jsonify(decoded_id_token)
 
         return f'Authentication completed! Authorization code: {auth_code}'
