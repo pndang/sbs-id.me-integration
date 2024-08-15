@@ -12,7 +12,7 @@ import os
 
 client_id = ''
 client_secret = ''
-redirect_uri = ''
+redirect_uri = 'http://localhost:3000/idme'
 
 def idme_callback(request):
 
