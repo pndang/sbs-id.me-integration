@@ -10,9 +10,9 @@ import os
 
 # Create your views here.
 
-client_id = ''
-client_secret = ''
-redirect_uri = 'http://localhost:3000/idme'
+client_id = settings.IDME_CLIENT_ID
+client_secret = settings.IDME_CLIENT_SECRET
+redirect_uri = settings.IDME_REDIRECT_URI
 
 def idme_callback(request):
 
@@ -84,7 +84,13 @@ def landing_page(request):
     else:
         form = UserInfoForm()
 
-    return render(request, 'landing/landing_page.html', {'form': form})
+    context = {
+        'form': form,
+        'idme_client_id': settings.IDME_CLIENT_ID,
+        'idme_redirect_uri': settings.IDME_REDIRECT_URI,
+    }
+
+    return render(request, 'landing/landing_page.html', context)
 
 def success_page(request):
     return render(request, 'landing/success_page.html')

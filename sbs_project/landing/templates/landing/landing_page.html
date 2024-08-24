@@ -1,6 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
@@ -9,23 +11,32 @@
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f9;
+            /* background-color: #f4f4f9; */
+            background: url("{% static 'landing/images/background.png' %}") no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
         .container {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.85);
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 100%;
             max-width: 400px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+            max-width: 285px; 
+            margin-bottom: -1rem;
+            margin-top: 0.1rem;
         }
         h1 {
-            margin-bottom: 0.25rem;
+            margin-bottom: 1.5rem;
             font-weight: 500;
             color: #333;
         }
@@ -82,12 +93,15 @@
 </head>
 <body>
     <div class="container">
+        <a href="https://www.smartborder.systems/" target="_blank">
+            <img src="{% static 'landing/images/SBS_logo.png' %}" alt="SBS Logo" class="logo" />
+        </a>
         <h1>Welcome to SBS!</h1>
-        <h2><b>Intelligent</b> port arrivals</h2>
+        <!-- <h2>Capacity optimizations</h2> -->
 
         <!-- Authentication button -->
         <div class="idme-button-container">
-            <a href="https://api.idmelabs.com/oauth/authorize?client_id=&redirect_uri=http://localhost:3000/idme&response_type=code&scope=openid%20http://idmanagement.gov/ns/assurance/ial/2/aal/2&eid=555">
+            <a href="https://api.idmelabs.com/oauth/authorize?client_id={{ idme_client_id }}&redirect_uri={{ idme_redirect_uri }}&response_type=code&scope=openid%20http://idmanagement.gov/ns/assurance/ial/2/aal/2&eid=555">
                 <button class="idme-button" type="button">Authenticate with ID.me</button>
             </a>
         </div>
