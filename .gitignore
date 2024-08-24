@@ -1,4 +1,10 @@
 local/*
 data/*
 Tester/*
+sbs_venv/*
 __pycache__/*
+/sbs_project/data/
+/sbs_project/landing/__pycache__/
+/sbs_project/sbs_project/__pycache__/
+/sbs_project/sbs_project/settings.py
+/sbs_project/sbs_project/db.sqlite3

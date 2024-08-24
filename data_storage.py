@@ -7,7 +7,7 @@ class StoreData:
         self.payload = payload
         self.headers = [
             "aud", "birth_date", "credential_option_preverified", "email", 
-            "exp", "fname", "iat", "identifier", "iss", "lname", "phone", "sub", "transaction", "uuid", "zip"
+            "exp", "fname", "iat", "identifier", "iss", "lname", "phonels", "sub", "transaction", "uuid", "zip"
             ]
 
     def save_json(self, file_name='data/raw_auth_data.json'):
