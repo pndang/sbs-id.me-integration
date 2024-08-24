@@ -55,8 +55,11 @@ def idme_callback(request):
                 data_storage.save_json()
                 data_storage.save_csv()
 
-                # redirect to success page
-                return redirect('landing_page')
+                # get user's first name
+                firstName = decodedIDToken.get('fname', 'User')
+
+                # redirect to welcome page
+                return redirect(reverse('welcome_page') + f"?first_name={firstName}")
             else:
                 return JsonResponse({'error': 'ID token not found in the token payload.'}, status=400)
         
@@ -65,6 +68,12 @@ def idme_callback(request):
     return JsonResponse({'error': 'Authentication failed. Authorization code not returned or invalid.'}, status=400)
 
 def landing_page(request):
+
+    """
+    Home page at launch, retrieves and store user input data.
+
+    """
+
     if request.method == 'POST':
         form = UserInfoForm(request.POST)
         if form.is_valid():
@@ -94,4 +103,23 @@ def landing_page(request):
     return render(request, 'landing/landing_page.html', context)
 
 def success_page(request):
+
+    """
+    Success page after successful ID.me authentication (no longer used).
+
+    """
+
     return render(request, 'landing/success_page.html')
+
+def welcome_page(request):
+
+    """
+    Success/Welcome page after successful ID.me authentication.
+
+    """
+
+    firstName = request.GET.get('first_name', 'User')
+    context = {
+        'first_name': firstName,
+    }
+    return render(request, 'landing/welcome_page.html', context)

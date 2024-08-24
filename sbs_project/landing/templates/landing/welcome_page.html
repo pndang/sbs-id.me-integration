@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: url("{% static 'landing/images/background.png' %}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .logo {
+            max-width: 285px; 
+            margin-bottom: -1rem;
+            margin-top: -1rem;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-bottom: 2rem;
+            font-weight: 500;
+            color: #333;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 1rem;
+            font-weight: 255;
+            color: #333;
+        }
+        .selection-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        .selection-box {
+            width: 48%;
+            padding: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            margin-bottom: 1rem;
+        }
+        .selection-box.selected {
+            border-color: #007BFF;
+        }
+        .selection-box:hover {
+            border-color: #0056b3;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+
+        // The code waits for  page to load, then attaches a click event listener to each selection box.
+
+        // When a box is clicked, it visually indicates the selection by adding a selected class to the clicked box and removing it from others.
+
+        // The corresponding hidden radio input inside the clicked box is marked, ensuring the selection carries through when the form is submitted.
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const selectionBoxes = document.querySelectorAll('.selection-box');
+
+            selectionBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    const selectedBoxes = this.closest('.selection-container').querySelectorAll('.selection-box');
+                    selectedBoxes.forEach(box => box.classList.remove('selected'));
+                    this.classList.add('selected');
+
+                    // Set input value
+                    const input = this.querySelector('input');
+                    input.checked = true;
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="https://www.smartborder.systems/" target="_blank">
+            <img src="{% static 'landing/images/SBS_logo.png' %}" alt="SBS Logo" class="logo" />
+        </a>
+        <h1>Welcome, {{ first_name }}!</h1>
+
+        <h2>Please select your arrival type:</h2>
+        <div class="selection-container">
+            <div class="selection-box">
+                <input type="radio" id="scheduled" name="arrival_type" value="Scheduled" hidden>
+                <label for="scheduled">Scheduled Arrival</label>
+            </div>
+            <div class="selection-box">
+                <input type="radio" id="last_minute" name="arrival_type" value="Last Minute" hidden>
+                <label for="last_minute">Last Minute Arrival</label>
+            </div>
+        </div>
+
+        <h2>Please select the port of arrival:</h2>
+        <div class="selection-container">
+            <div class="selection-box">
+                <input type="radio" id="san_ysidro" name="port_of_arrival" value="San Ysidro" hidden>
+                <label for="san_ysidro">San Ysidro</label>
+            </div>
+            <div class="selection-box">
+                <input type="radio" id="otay_mesa" name="port_of_arrival" value="Otay Mesa" hidden>
+                <label for="otay_mesa">Otay Mesa</label>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </div>
+</body>
+</html>
