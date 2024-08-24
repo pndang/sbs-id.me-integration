@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.http import JsonResponse
+from django.urls import reverse
 from .forms import UserInfoForm
 from .data_storage import StoreData
 import requests
