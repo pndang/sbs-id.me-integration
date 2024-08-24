@@ -123,3 +123,21 @@ def welcome_page(request):
         'first_name': firstName,
     }
     return render(request, 'landing/welcome_page.html', context)
+
+def neg_avai_page(request):
+
+    """
+    Demo page in case of negative availability given a user's preferences.
+
+    """
+
+    return render(request, 'landing/neg_avai_page.html')
+
+def virtual_line_page(request):
+
+    """
+    Demo virtual wait line during negative availability.
+
+    """
+
+    return render(request, 'landing/virtual_line_page.html')

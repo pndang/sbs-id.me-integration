@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Line</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: url("{% static 'landing/images/background.png' %}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .logo {
+            max-width: 285px; 
+            margin-bottom: -1rem;
+            margin-top: -1rem;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        h2 {
+            font-size: 18px;
+            margin-top: 1.5rem;
+            margin-bottom: 3rem;
+            font-weight: 255;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://www.smartborder.systems/" target="_blank">
+            <img src="{% static 'landing/images/SBS_logo.png' %}" alt="SBS Logo" class="logo" />
+        </a>
+        <h1>Virtual Line</h1>
+
+        <p>You have successfully entered the virtual line.</p>
+        
+        <p>You will be notified when an arrival window is open for reservation at San Ysidro.</p>
+
+        <p>Thank you for your patience!</p>
+
+        <h2>Estimated wait time : 22 minutes</h2>
+
+        <button type="submit">Exit line</button>
+    </div>
+</body>
+</html>

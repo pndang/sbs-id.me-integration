@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Negative Availability</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -33,16 +33,19 @@
             flex-direction: column;
             align-items: center;
         }
+        .neg-avai {
+            color: red;
+        }
         h1 {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 500;
             color: #333;
         }
         h2 {
             font-size: 18px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-weight: 255;
-            color: #333;
+            /* color: #333; */
         }
         .selection-container {
             display: flex;
@@ -57,7 +60,7 @@
             text-align: center;
             cursor: pointer;
             transition: border-color 0.3s;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         .selection-box.selected {
             border-color: #007BFF;
@@ -81,13 +84,6 @@
         }
     </style>
     <script>
-
-        // The code waits for  page to load, then attaches a click event listener to each selection box.
-
-        // When a box is clicked, it visually indicates the selection by adding a selected class to the clicked box and removing it from others.
-
-        // The corresponding hidden radio input inside the clicked box is marked, ensuring the selection carries through when the form is submitted.
-
         document.addEventListener("DOMContentLoaded", function() {
             const selectionBoxes = document.querySelectorAll('.selection-box');
 
@@ -97,7 +93,7 @@
                     selectedBoxes.forEach(box => box.classList.remove('selected'));
                     this.classList.add('selected');
 
-                    // Set input value
+                    // Set hidden input value
                     const input = this.querySelector('input');
                     input.checked = true;
                 });
@@ -110,37 +106,25 @@
         <a href="https://www.smartborder.systems/" target="_blank">
             <img src="{% static 'landing/images/SBS_logo.png' %}" alt="SBS Logo" class="logo" />
         </a>
-        <h1>Welcome, {{ first_name }}!</h1>
+        <h1>Reservation</h1>
 
-        <h2>Please select your arrival type:</h2>
+        <h2><b>Current status</b>: <span class="neg-avai">Negative availability</span></h2>
 
-        <form method="post" action="{% url 'neg_avai_page' %}">
+        <h2>Please select an option:</h2>
+        <form method="post" action="{% url 'virtual_line_page' %}">
             {% csrf_token %}
-        
             <div class="selection-container">
                 <div class="selection-box">
-                    <input type="radio" id="scheduled" name="arrival_type" value="Scheduled" hidden>
-                    <label for="scheduled">Scheduled Arrival</label>
+                    <input type="radio" id="virtual_line" name="action_type" value="Virtual Line" hidden>
+                    <label for="virtual_line">Enter virtual line</label>
                 </div>
                 <div class="selection-box">
-                    <input type="radio" id="last_minute" name="arrival_type" value="Last Minute" hidden>
-                    <label for="last_minute">Last Minute Arrival</label>
+                    <input type="radio" id="different_port" name="action_type" value="Different Port" hidden>
+                    <label for="different_port">Try different port</label>
                 </div>
             </div>
 
-            <h2>Please select the port of arrival:</h2>
-            <div class="selection-container">
-                <div class="selection-box">
-                    <input type="radio" id="san_ysidro" name="port_of_arrival" value="San Ysidro" hidden>
-                    <label for="san_ysidro">San Ysidro</label>
-                </div>
-                <div class="selection-box">
-                    <input type="radio" id="otay_mesa" name="port_of_arrival" value="Otay Mesa" hidden>
-                    <label for="otay_mesa">Otay Mesa</label>
-                </div>
-            </div>
-
-            <button type="submit">Submit</button>>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </body>
