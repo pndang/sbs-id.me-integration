@@ -7,5 +7,8 @@ urlpatterns = [
     path('success/', views.success_page, name='success'),
     path('welcome/', views.welcome_page, name='welcome_page'),
     path('negative-availability/', views.neg_avai_page, name='neg_avai_page'),
-    path('line/', views.virtual_line_page, name='virtual_line_page')
+    path('line/', views.virtual_line_page, name='virtual_line_page'),
+    path('confirmation/', views.confirmation_page, name='confirmation_page'),
+    path('calendar/', views.calendar_view, name='calendar_view'),
+    # path('__debug__/', include('debug_toolbar.urls')),
 ]

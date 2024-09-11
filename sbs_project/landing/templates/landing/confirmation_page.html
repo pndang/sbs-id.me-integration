@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thank you, {{ first_name }}!</h1>
+    <p>You selected <b>{{ arrival_type }}</b> for your arrival type.</p>
+    <p>Your port of entry is <b>{{ port_of_arrival }}</b>.</p>
+    <a href="{% url 'landing_page' %}">Return to home</a>
+</body>
+</html>
