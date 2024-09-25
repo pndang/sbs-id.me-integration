@@ -55,22 +55,22 @@
 
     <h1>Calendar for {{ port_of_arrival }}</h1>
 
-    {% if availability %}
-    <h2>Available Times</h2>
-        <ul id="times-list">
-            <li>Select a date to see available times</li>
-        </ul>
-    {% else %}
-        <h2>No available times for the selected port of entry</h2>
-    {% endif %}
+    <h2>Debug: Availability Data</h2>
+    <pre>{{ availability }}</pre>  <!-- Check how availability is rendered -->
+    <h2>Debug: Earliest date</h2>
+    <pre>{{ earliest_available }}</pre>
+    <h2>{{ today|date:"F Y" }}</h2>
 
     <div class="calendar-grid">
         {% for day in all_days_in_month %}
             {% if day|stringformat:"Y-m-d" in availability %}
+                <!-- Mark all available dates as green -->
                 <div class="day available" data-date="{{ day|stringformat:'Y-m-d' }}">{{ day.day }}</div>
             {% elif day == today %}
+                <!-- Mark today with the "today" class -->
                 <div class="day today" data-date="{{ day|stringformat:'Y-m-d' }}">{{ day.day }}</div>
             {% else %}
+                <!-- Mark all other dates as unavailable -->
                 <div class="day unavailable" data-date="{{ day|stringformat:'Y-m-d' }}">{{ day.day }}</div>
             {% endif %}
         {% endfor %}
@@ -83,24 +83,37 @@
         </ul>
     </div>
 
+    <!-- Test output of availability as plain text -->
+    <h2>Debug: Rendered Availability Data</h2>
+    <pre>{{ availability|escape }}</pre>
+
+    <!-- Use JSON directly in script -->
     <script>
         const availability = {{ availability|safe }};
-
-        // Handle day clicks to show available times
+        console.log('Availability:', availability);  // Debug to ensure the JSON object is correct
+    
         document.querySelectorAll('.day.available').forEach(dayElement => {
+            // Use an arrow function to ensure the event target is correctly processed
             dayElement.addEventListener('click', function() {
-                const date = this.getAttribute('data-date');
+                console.log('Clicked element:', dayElement);  // Log the clicked element to verify
+                const date = dayElement.getAttribute('data-date');  // Use 'dayElement' directly
+                console.log('Clicked date:', date);  // Log the clicked date to verify
+    
                 const timesList = document.getElementById('times-list');
-                timesList.innerHTML = "";
-
+                timesList.innerHTML = "";  // Clear previous times
+    
                 // Check if there are available times for the selected date
                 if (availability[date]) {
+                    console.log('Times available:', availability[date]);  // Debug the times
+    
                     availability[date].forEach(time => {
                         const timeOption = document.createElement("li");
-                        timeOption.innerText = new Date(time).toLocaleTimeString();
+                        timeOption.innerText = time;
+                        console.log('Appending time:', time);  // Log to verify append is happening
                         timesList.appendChild(timeOption);
                     });
                 } else {
+                    console.log('No times available for this date');  // Debug no times
                     timesList.innerHTML = "<li>No available times</li>";
                 }
             });
