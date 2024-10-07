@@ -1,11 +1,10 @@
 build:
   languages:
     - python
-
-setup:
   config:
     requirements: sbs_project/requirements.txt
-  run: sbs_project/manage.py
+  run:
+    - sbs_project/manage.py
 
 release:
   command:
