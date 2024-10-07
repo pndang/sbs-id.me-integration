@@ -1,1 +1,1 @@
-web: gunicorn landing.wsgi
+web: gunicorn sbs_project.wsgi
