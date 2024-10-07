@@ -15,8 +15,8 @@ from pathlib import Path
 import dj_database_url
 
 IDME_CLIENT_ID = "618fd8e8c350429c962b8e5338bb3404"
-IDME_CLIENT_SECRET = "618fd8e8c350429c962b8e5338bb3404"
-IDME_REDIRECT_URI = 'http://localhost:3000/idme'
+IDME_CLIENT_SECRET = "d023328c4b0d6ed4c3aed070a6c1b530"
+IDME_REDIRECT_URI = 'https://shorturl.at/qNeQO'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
