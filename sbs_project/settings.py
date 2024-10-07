@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-6apf#79a23m7j0l+s%#iq1i8ejk5bq=ao2!kmjl#2s=jlnf_@e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['landing.herokuapp.com']
+ALLOWED_HOSTS = ['landing.herokuapp.com', '*']
 
 
 # Application definition
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'landing',
+    'sbs_project.landing',
     # 'debug_toolbar',
 ]
 
@@ -62,29 +62,6 @@ MIDDLEWARE = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATUCFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'console': {
-#             'level': 'DEBUG',
-#             'class': 'logging.StreamHandler',
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['console'],
-#             'level': 'DEBUG',
-#         },
-#     },
-# }
-
-# INTERNAL_IPS = [
-#     '127.0.0.1',  # Localhost IP
-#     'localhost',  # Named localhost
-#     '0.0.0.0',    # All available IPs on your system
-# ]
 
 ROOT_URLCONF = 'sbs_project.urls'
 
@@ -164,7 +141,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

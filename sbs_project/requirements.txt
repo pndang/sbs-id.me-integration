@@ -1,7 +1,0 @@
-Djangos
-gunicorn
-dj-database-url
-psycopg2
-whitenoise
-python-decouple
-PyJWT
