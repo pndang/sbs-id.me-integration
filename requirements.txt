@@ -6,3 +6,4 @@ whitenoise
 python-decouple
 PyJWT
 requests
+pandas
