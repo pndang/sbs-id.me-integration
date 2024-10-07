@@ -1,4 +1,4 @@
-Djangos
+Django
 gunicorn
 dj-database-url
 psycopg2
