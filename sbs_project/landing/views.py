@@ -30,50 +30,15 @@ def idme_callback(request):
 
     """
 
-    # BOOKING_WINDOW = 5
-
-    # # get user's poe selections
-    # POE = 'Otay Mesa'
-
-    # # load the csv file for availability
-    # base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    # path = os.path.join(base_dir, 'data', 'calendar.csv')
-
-    # # read data
-    # df = pd.read_csv(path)
-
-    # # filter based on user selections ('open' poe)
-    # df = df[(df['status'] == 'open') & (df['poe'] == POE)]
-
-    # # convert timestamp to datetime
-    # df['timestamp'] = pd.to_datetime(df['timestamp']).dt.tz_localize('UTC').dt.tz_convert('America/Tijuana')
-
-    # # get today's date and limit to next 5 days
-    # today = datetime.now(pytz.timezone('America/Tijuana')).date()
-    # end = today + pd.Timedelta(days=BOOKING_WINDOW)
-    # df = df[df['timestamp'].dt.date.between(today, end)]
-
-    # # store in dict to organize by day
-    # # availability = df.groupby(df['timestamp'].dt.date)['timestamp'].apply(list).to_dict()
-    # availability = {}
-    # for date, times in df.groupby(df['timestamp'].dt.date)['timestamp']:
-    #     date_str = date.strftime('%Y-%m-%d')
-
-    #     time_list = [time.strftime('%H:%M:%S') for time in times]
-    #     availability[date_str] = time_list
-
-    # base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    # # Write availability to a text file for debugging
-    # debug_file_path = os.path.join(base_dir, 'data', 'availability_debug.txt')
-    # with open(debug_file_path, 'w') as debug_file:
-    #     debug_file.write(json.dumps(availability, indent=4))
-
     authCode = request.GET.get('code')
     if authCode:
         print(f'Authorization code: {authCode}\n')
 
         tokenPayloadURL = "https://api.idmelabs.com/oauth/token"
+        
+        # "https://api.id.me/oauth/token"
+        
+        # "https://api.idmelabs.com/oauth/token"
 
         payload = {
             'code': authCode,
@@ -99,8 +64,7 @@ def idme_callback(request):
                 data_storage = StoreData(decodedIDToken)
 
                 # store data
-                data_storage.save_json()
-                data_storage.save_csv()
+                data_storage.save_to_database()
 
                 # get user's first name
                 firstName = decodedIDToken.get('fname', 'User')
