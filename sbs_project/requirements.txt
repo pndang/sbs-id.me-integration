@@ -1,4 +1,5 @@
+Django
 whitenoise
 gunicorn
-django
 dj-database-url
+psycopg2
