@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sbs_project.landing',
-    # 'debug_toolbar',
+    'landing'
 ]
 
 MIDDLEWARE = [
