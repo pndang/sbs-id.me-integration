@@ -105,8 +105,8 @@ def landing_page(request):
 
     context = {
         'form': form,
-        'idme_client_id': settings.IDME_CLIENT_ID,
-        'idme_redirect_uri': settings.IDME_REDIRECT_URI,
+        'idme_client_id': client_id,
+        'idme_redirect_uri': redirect_uri,
     }
 
     return render(request, 'landing/landing_page.html', context)
