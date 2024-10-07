@@ -8,12 +8,12 @@ from data_storage import StoreData
 app = Flask(__name__)
 app.secret_key = os.urandom(25)
 
-redirect_uri = 
+redirect_uri = ''
 response_type = 'authorization_code'
 
-client_id = 
-client_secret = 
-auth_link = f"https://api.idmelabs.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope=openid%20http://idmanagement.gov/ns/assurance/ial/2/aal/2&eid=555"
+client_id=''
+# client_secret = ''
+auth_link = f"https://api.idmelabs.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope=openid http://idmanagement.gov/ns/assurance/ial/2/aal/2&eid=555"
 
 @app.route('/')
 def index():
