@@ -10,12 +10,35 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
+        ## DID NOT WORK
+        # migrations.AlterField(
+        #     model_name='authdata',
+        #     name='exp',
+        #     field=models.IntegerField(blank=True, null=True),
+        # ),
+        # migrations.AlterField(
+        #     model_name='authdata',
+        #     name='iat',
+        #     field=models.IntegerField(blank=True, null=True),
+        # ),
+
+        # Remove
+        migrations.RemoveField(
+            model_name='authdata',
+            name='exp',
+        ),
+        migrations.RemoveField(
+            model_name='authdata',
+            name='iat',
+        ),
+
+        # Add back
+        migrations.AddField(
             model_name='authdata',
             name='exp',
             field=models.IntegerField(blank=True, null=True),
         ),
-        migrations.AlterField(
+        migrations.AddField(
             model_name='authdata',
             name='iat',
             field=models.IntegerField(blank=True, null=True),
