@@ -123,14 +123,18 @@ DATABASES = {
     )
 }
 
-# # For local
-# if os.getenv('DATABASE_URL') is None:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / "db.sqlite3",
-#         }
-#     }
+# For local
+if os.getenv('DATABASE_URL') is None:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'sbs_users_data',
+            'USER': 'ec',
+            'PASSWORD': 'ecdata2024',
+            'HOST': 'localhost',
+            'PORT': '5433',
+        }
+    }   
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

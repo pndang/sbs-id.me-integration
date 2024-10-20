@@ -47,11 +47,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='authdata',
             name='exp',
-            field=models.BigIntegerField(blank=True, null=True),
+            field=models.CharField(max_length=255, blank=True, null=True),
             ),
         migrations.AlterField(
             model_name='authdata',
             name='iat',
-            field=models.BigIntegerField(blank=True, null=True),
+            field=models.CharField(max_length=255, blank=True, null=True),
             ),
     ]
