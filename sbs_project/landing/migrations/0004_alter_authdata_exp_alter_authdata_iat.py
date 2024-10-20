@@ -36,11 +36,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='authdata',
             name='exp',
-            field=models.IntegerField(blank=True, null=True),
+            field=models.BigIntegerField(blank=True, null=True),
         ),
         migrations.AddField(
             model_name='authdata',
             name='iat',
-            field=models.IntegerField(blank=True, null=True),
+            field=models.BigIntegerField(blank=True, null=True),
         ),
     ]
