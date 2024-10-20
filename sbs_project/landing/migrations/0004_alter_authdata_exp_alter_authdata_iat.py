@@ -22,36 +22,36 @@ class Migration(migrations.Migration):
         #     field=models.IntegerField(blank=True, null=True),
         # ),
 
-        # # Remove
-        # migrations.RemoveField(
-        #     model_name='authdata',
-        #     name='exp',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='authdata',
-        #     name='iat',
-        # ),
-
-        # # Add back
-        # migrations.AddField(
-        #     model_name='authdata',
-        #     name='exp',
-        #     field=models.BigIntegerField(blank=True, null=True),
-        # ),
-        # migrations.AddField(
-        #     model_name='authdata',
-        #     name='iat',
-        #     field=models.BigIntegerField(blank=True, null=True),
-        # ),
-
-        migrations.AlterField(
+        # Remove
+        migrations.RemoveField(
             model_name='authdata',
             name='exp',
-            field=models.CharField(max_length=255, blank=True, null=True),
-            ),
-        migrations.AlterField(
+        ),
+        migrations.RemoveField(
             model_name='authdata',
             name='iat',
-            field=models.CharField(max_length=255, blank=True, null=True),
-            ),
+        ),
+
+        # Add back
+        migrations.AddField(
+            model_name='authdata',
+            name='exp',
+            field=models.BigIntegerField(blank=True, null=True),
+        ),
+        migrations.AddField(
+            model_name='authdata',
+            name='iat',
+            field=models.BigIntegerField(blank=True, null=True),
+        ),
+
+        # migrations.AlterField(
+        #     model_name='authdata',
+        #     name='exp',
+        #     field=models.BigIntegerField(null=True, blank=True),
+        #     ),
+        # migrations.AlterField(
+        #     model_name='authdata',
+        #     name='iat',
+        #     field=models.BigIntegerField(null=True, blank=True),
+        #     ),
     ]

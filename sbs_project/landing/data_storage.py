@@ -44,8 +44,13 @@ class StoreData:
                 uuid=self.payload.get('uuid'),
                 zip_code=self.payload.get('zip')
             )
-            auth_data.save()
-            print('Data successfully saved to the database.')
+
+            logger.info(f"Saving user data: {self.payload}")
+            try:
+                auth_data.save()
+                logger.info("Data successfully saved to the database.")
+            except Exception as e:
+                logger.error(f"Error saving data: {e}")
 
         except Exception as e:
             print('ERROR: Data not saved to the database.')
