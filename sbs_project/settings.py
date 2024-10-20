@@ -111,8 +111,14 @@ WSGI_APPLICATION = 'sbs_project.wsgi.application'
 # }
 
 # Switch to Heroku-hosted PostgreSQL
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
 }
 
 # # For local
