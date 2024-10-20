@@ -117,7 +117,9 @@ WSGI_APPLICATION = 'sbs_project.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,  # Keep connections alive for 10 minutes
+        ssl_require=True   # Enable SSL for the database connection
     )
 }
 
