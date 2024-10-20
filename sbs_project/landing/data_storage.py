@@ -9,6 +9,8 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+logger.info("test test test test test")
+
 class StoreData:
 
     def __init__(self, payload):
