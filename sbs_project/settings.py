@@ -14,6 +14,8 @@ import os
 from pathlib import Path
 import dj_database_url
 
+import logging.config
+
 IDME_CLIENT_ID = "618fd8e8c350429c962b8e5338bb3404"
 # IDME_CLIENT_ID = "bd9a644b0d91195674c59046852ca653"
 IDME_CLIENT_SECRET = "d023328c4b0d6ed4c3aed070a6c1b530"
@@ -23,6 +25,41 @@ IDME_REDIRECT_URI = 'https://shorturl.at/qNeQO'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # This keeps Django's default logging
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',  # Adjust this to 'INFO' or 'WARNING' for less verbosity
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',  # Log everything from Django at DEBUG level and above
+            'propagate': True,
+        },
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',  # Root logger for your custom application logs
+            'propagate': False,
+        },
+    },
+}
 
 
 # Quick-start development settings - unsuitable for production

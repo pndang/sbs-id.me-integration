@@ -5,6 +5,10 @@ import os
 from datetime import datetime
 from .models import AuthData
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 class StoreData:
 
     def __init__(self, payload):
