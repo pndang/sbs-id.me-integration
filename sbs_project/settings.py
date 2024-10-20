@@ -15,8 +15,11 @@ from pathlib import Path
 import dj_database_url
 
 IDME_CLIENT_ID = "618fd8e8c350429c962b8e5338bb3404"
+# IDME_CLIENT_ID = "bd9a644b0d91195674c59046852ca653"
 IDME_CLIENT_SECRET = "d023328c4b0d6ed4c3aed070a6c1b530"
+# IDME_CLIENT_SECRET = "e5d9325601b9350e3f136ad0aa3d61f0"
 IDME_REDIRECT_URI = 'https://shorturl.at/qNeQO'
+# IDME_REDIRECT_URI = "http://localhost:3000/idme"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -112,14 +115,14 @@ DATABASES = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
-# For local
-if os.getenv('DATABASE_URL') is None:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / "db.sqlite3",
-        }
-    }
+# # For local
+# if os.getenv('DATABASE_URL') is None:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / "db.sqlite3",
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

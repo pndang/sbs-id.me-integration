@@ -35,7 +35,7 @@ def idme_callback(request):
         print(f'Authorization code: {authCode}\n')
 
         tokenPayloadURL = "https://api.id.me/oauth/token"
-        
+        # "https://api.id.me/oauth/token"
         # "https://api.idmelabs.com/oauth/token"
 
         payload = {
