@@ -69,7 +69,7 @@ LOGGING = {
 SECRET_KEY = 'django-insecure-6apf#79a23m7j0l+s%#iq1i8ejk5bq=ao2!kmjl#2s=jlnf_@e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['landing.herokuapp.com', '*']
 
