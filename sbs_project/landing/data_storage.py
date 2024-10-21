@@ -9,7 +9,9 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-logger.info("test test test test test")
+logger.info("\n test test test test test \n")
+
+logger.info("\n bla bla bla bla bla \n")
 
 class StoreData:
 
@@ -20,6 +22,8 @@ class StoreData:
 
         """ Save user data (ID.me payload) to the PostgreSQL database using 
         Django ORM. """
+
+        logger.info("\n save save save save save \n")
 
         try:
             
@@ -51,12 +55,12 @@ class StoreData:
                 zip_code=self.payload.get('zip')
             )
 
-            logger.info(f"Saving user data: {self.payload}")
+            logger.info(f"\n Saving user data: {self.payload} \n")
             try:
                 auth_data.save()
-                logger.info("Data successfully saved to the database.")
+                logger.info("\n Data successfully saved to the database. \n")
             except Exception as e:
-                logger.error(f"Error saving data: {e}")
+                logger.error(f"\n Error saving data: {e} \n")
 
         except Exception as e:
             print('ERROR: Data not saved to the database.')
