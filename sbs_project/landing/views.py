@@ -17,8 +17,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-logger.info("\n view view view view view \n")
-
 # Create your views here.
 
 client_id = settings.IDME_CLIENT_ID
@@ -32,17 +30,12 @@ def idme_callback(request):
 
     """
 
-    logger.info("\n in in in in in \n")
-
     authCode = request.GET.get('code')
     if authCode:
-
-        logger.info("\n in1 in1 in1 in1 in1 \n")
 
         print(f'Authorization code: {authCode}\n')
 
         tokenPayloadURL = "https://api.id.me/oauth/token"
-        
         # "https://api.id.me/oauth/token"
         # "https://api.idmelabs.com/oauth/token"
 
@@ -70,16 +63,16 @@ def idme_callback(request):
                 data_storage = StoreData(decodedIDToken)
 
                 # store data
-
-                logger.info("\n in2 in2 in2 in2 in2 \n")
-                
                 data_storage.save_to_database()
 
                 # get user's first name
                 firstName = decodedIDToken.get('fname', 'User')
 
                 # redirect to welcome page
-                return redirect(reverse('welcome_page') + f"?first_name={firstName}")
+                # return redirect(reverse('welcome_page') + f"?first_name={firstName}")
+
+                # redirect to 3rd-party ux solution
+                return redirect("https://shorturl.at/qNeQO")
             else:
                 return JsonResponse({'error': 'ID token not found in the token payload.'}, status=400)
         

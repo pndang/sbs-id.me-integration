@@ -9,10 +9,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-logger.info("\n test test test test test \n")
-
-logger.info("\n bla bla bla bla bla \n")
-
 class StoreData:
 
     def __init__(self, payload):
@@ -22,8 +18,6 @@ class StoreData:
 
         """ Save user data (ID.me payload) to the PostgreSQL database using 
         Django ORM. """
-
-        logger.info("\n save save save save save \n")
 
         try:
             
