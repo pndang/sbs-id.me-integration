@@ -101,9 +101,16 @@
 
         <!-- Authentication button -->
         <div class="idme-button-container">
-            <a href="https://api.id.me/oauth/authorize?client_id={{ idme_client_id }}&redirect_uri={{ idme_redirect_uri }}&response_type=code&scope=openid http://idmanagement.gov/ns/assurance/ial/2/aal/2">
+            <!-- <a href="https://api.id.me/oauth/authorize?client_id={{ idme_client_id }}&redirect_uri={{ idme_redirect_uri }}&response_type=code&scope=openid http://idmanagement.gov/ns/assurance/ial/2/aal/2">
                 <button class="idme-button" type="button">Authenticate with ID.me</button>
-            </a>
+            </a> -->
+            <span
+                id='idme-wallet-button'
+                data-scope='openid http://idmanagement.gov/ns/assurance/ial/2/aal/2'
+                data-client-id='{{ idme_client_id }}'
+                data-redirect='{{ idme_redirect_uri }}'
+                data-response='code'>
+            </span>
         </div>
 
         <!-- User information form -->
@@ -113,5 +120,8 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+
+    <!-- Load the ID.me button JavaScript -->
+    <script src='https://s3.amazonaws.com/idme/developer/idme-buttons/assets/js/idme-wallet-button.js'></script>
 </body>
 </html>
