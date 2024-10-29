@@ -72,7 +72,7 @@ def idme_callback(request):
                 # return redirect(reverse('welcome_page') + f"?first_name={firstName}")
 
                 # redirect to 3rd-party ux solution
-                return redirect("https://shorturl.at/qNeQO")
+                return redirect("https://smarbordermember.as.me/")
             else:
                 return JsonResponse({'error': 'ID token not found in the token payload.'}, status=400)
         
