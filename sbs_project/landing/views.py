@@ -104,7 +104,8 @@ def landing_page(request):
                     writer.writeheader()
                 writer.writerow(userInfo)
 
-            return redirect('success')
+            # return redirect('success')
+            return redirect("https://smarbordermember.as.me/")
     else:
         form = UserInfoForm()
 
@@ -114,8 +115,7 @@ def landing_page(request):
         'idme_redirect_uri': redirect_uri,
     }
 
-    # return render(request, 'landing/landing_page.html', context)
-    return redirect("https://smarbordermember.as.me/")
+    return render(request, 'landing/landing_page.html', context)
 
 def success_page(request):
 
