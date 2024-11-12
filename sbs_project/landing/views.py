@@ -114,7 +114,8 @@ def landing_page(request):
         'idme_redirect_uri': redirect_uri,
     }
 
-    return render(request, 'landing/landing_page.html', context)
+    # return render(request, 'landing/landing_page.html', context)
+    return redirect("https://smarbordermember.as.me/")
 
 def success_page(request):
 
