@@ -78,7 +78,8 @@ def idme_callback(request):
         
         return JsonResponse({'error': 'Failed to retrieve the token payload.'}, status=response.status_code)
 
-    return JsonResponse({'error': 'Authentication failed. Authorization code not returned or invalid.'}, status=400)
+    return redirect("https://sbs-ux-f567b1e75237.herokuapp.com/")
+    # JsonResponse({'error': 'Authentication failed. Authorization code not returned or invalid.'}, status=400)
 
 def landing_page(request):
 
